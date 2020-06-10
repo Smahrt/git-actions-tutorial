@@ -1,0 +1,33 @@
+
+# 1. Name our workflow
+name: demo-workflow
+
+# 2. Specify a trigger
+on:
+  push:
+    branches:
+      - master
+
+# 3. Specify the job to be executed and the steps to execute that job
+jobs:
+  # a. Give our job a name
+  run-tests:
+    
+    # b. Specify the operating system our job should run on
+    runs-on: ubuntu-latest
+
+    # c. Define the steps to execute our job
+    steps:
+      # Check out the source code that was just pushed to the specified branch (e.g. master)
+      - name: Check out our example code
+        uses: actions/checkout@v2
+
+      # Install Node
+      - name: Set up Node.JS
+        uses: actions/setup-node@v1
+        with:
+          node-version: “10.x”
+
+      # Run the tests
+      - name: Run tests
+        run: npm test
