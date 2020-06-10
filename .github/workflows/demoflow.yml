@@ -29,5 +29,5 @@ jobs:
       # Run the tests
       - name: Run tests
         run: |
-          npm ic
+          npm ci
           npm test
